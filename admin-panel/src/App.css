@@ -32,6 +32,23 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+#scrollAdmins
+{
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  align-self: center;
+  right: 23%;
+}
+#adminsDiv
+{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
 #tickersDiv
 {
   position: absolute;

@@ -7,7 +7,7 @@ export default function ChangeConfirmation(props) {
     const[confirmation, setConfirmation] = useState('')
     const{code} = useContext(adminContext)
     const{ newPassword , setNewPassword, changePage,setChangePage } = useContext(adminContext)
-    const{admin, newEmail,setNewEmail,newAdmin,setNewAdmin} = useContext(adminContext)
+    const{admin, newEmail,setNewEmail,newAdmin,setNewAdmin,adminToDelete,setAdminToDelete} = useContext(adminContext)
     const nav = useNavigate()
 
 
@@ -126,7 +126,7 @@ export default function ChangeConfirmation(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:newAdmin,
+                    email:adminToDelete,
                 })
             }).then((res)=>{return res.json()})
             .then((data)=>

@@ -9,17 +9,41 @@ export const AdminProvider = ({children})=>
     const[allData , setAllData] = useState()
     const[newPassword,setNewPassword] = useState('')
     const[newPasswordConfirm,setNewPasswordConfirm] = useState('')
-    const[admins,setAdmins] = useState()
+    const[admins,setAdmins] = useState([])
     const[newEmail,setNewEmail] = useState('')
     const[changePage,setChangePage] = useState(0)
     const[newAdmin,setNewAdmin] = useState('')
     const[req,setReq] = useState(0)
     const[users,setUsers] = useState([])
     const[tickers,setTickers]= useState([])
+    const[show,setShow] = useState('')
+    const[adminToDelete,setAdminToDelete] = useState('')
 
 
 
+    const showDeleteButton = ()=>
+    {
+        if(admin == 'tareq.salame@gmail.com')
+        {
+            setShow('flex')
+            fetch('/getAdmins').then((res)=>{return res.json()}).
+            then((data)=>
+            {
+                setAdmins([...data])
+            })
+        }
+        else
+        {
+            setShow('none')
+        }
+    }
+
+    useEffect(()=>
+    {
+        showDeleteButton()
+    },[admin,admins])
     
+
     
     // useEffect(()=>
     // {
@@ -69,7 +93,7 @@ export const AdminProvider = ({children})=>
     return (
     <adminContext.Provider value={{admin,setAdmin,code,setCode,allData,setNewPassword,newPassword,newPasswordConfirm,setNewPasswordConfirm,
         newEmail,setNewEmail,changePage,setChangePage,newAdmin,setNewAdmin,req,setReq,users,setUsers,tickers,setTickers
-        }}>
+        ,show,admins,adminToDelete,setAdminToDelete}}>
         {children}
     </adminContext.Provider>
     )

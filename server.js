@@ -343,6 +343,12 @@ app.post('/deleteAdmin', async(req,res)=>
 //     res.send('ok')
 // })
 
+app.get('/getAdmins', async(req,res)=>
+{
+  let temp = await adminModel.find()
+  res.json(temp)
+})
+
 // app.get('/addtheuser', async(req,res)=>
 // {
 //     let temp = await usersList.insertMany({

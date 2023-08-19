@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import adminContext from '../userContext'
+import AdminDelete from './AdminDelete'
 export default function AdminPanel(props) {
     props.setMenu(true)
     const{ newPassword , setNewPassword, newEmail,setNewEmail } = useContext(adminContext)
     const{ newPasswordConfirm , setNewPasswordConfirm } =useContext(adminContext)
-    const{ admin , changePage,setChangePage,setAdmin } = useContext(adminContext)
-    const { setCode,newAdmin,setNewAdmin,req,setReq } = useContext(adminContext)
+    const{ admin , changePage,setChangePage,setAdmin,admins } = useContext(adminContext)
+    const { setCode,newAdmin,setNewAdmin,req,setReq,show } = useContext(adminContext)
     
 
     const nav = useNavigate()
@@ -119,46 +120,7 @@ export default function AdminPanel(props) {
         
     }
 
-    const deleteAdmin = ()=>
-    {
-        setReq(3)
-        if(admin == newAdmin)
-        {
-            alert('admin cannot delete his email')
-        }
-        else
-        {
-                fetch('/sendPasswordReset', 
-                {
-                    headers:{
-                        "Content-Type": "application/json"
-                    },
-                    method:'post',
-                    body:JSON.stringify({
-                        email:admin,
-                        deletedAdmin: newAdmin,
-                        requist:req
-
-                    })
-                }).then((res)=>{return res.json()})
-                .then((data)=>
-                {
-                    if(data == null)
-                    {
-                        alert('Cannot Find This Email')
-                    }
-                    else
-                    {
-                        setCode(data)
-                        setChangePage(3)
-                        nav('/changeConfirmation')
-                    }
-                }).catch((err)=>{return err})
-        }
-        
-    }
-
-
+    
 
     const chooseDiv = ()=>
     {
@@ -189,10 +151,17 @@ export default function AdminPanel(props) {
         }
         else
         {
-            return <div className='divs'>
+            return <div style={{paddingBottom:'150px'}} className='divs'>
             <h1 className='change'>Delete Admin</h1>
-            <input onChange={(e)=>{setNewAdmin(e.target.value)}} className='Inputs' style={{marginLeft:'20px',marginRight:'20px'}} placeholder='Enter The Email' type="text" />
-            <button onClick={deleteAdmin} className='signInButton'>Delete</button>
+            <div id='scrollAdmins'>
+            {admins.map((val,idx)=>
+            {
+                if(val.email != admin)
+                {
+                    return <AdminDelete setReq={setReq} req={req} admin={admin} newAdmin={newAdmin} val={val} idx={idx}/>
+                }
+            })}
+            </div>
             </div>
         }
     }
@@ -211,16 +180,18 @@ export default function AdminPanel(props) {
     //   // Close the alert
     //   setShowAlert(false);
     // };
+
+    
+    
   return (
     <div id='adminPanel'>
         <div id='adminPanelMenu'>
             <button onClick={()=>{setChoose(0);setReq(0)}} className='adminPanelMenuButton'>Change Password  </button>
             <button onClick={()=>{setChoose(1);setReq(1)}} className='adminPanelMenuButton'>Change My Email  </button>
             <button onClick={()=>{setChoose(2);setReq(2)}} className='adminPanelMenuButton'>Add Another Admin</button>
-            <button onClick={()=>{setChoose(3);setReq(3)}} className='adminPanelMenuButton'>Delete Admin     </button>
+            <button onClick={()=>{setChoose(3);setReq(3)}} style={{display:show}} className='adminPanelMenuButton'>Delete Admin     </button>
         </div>
-        {chooseDiv()}
-        
+        {chooseDiv()} 
     </div>
   )
 }
