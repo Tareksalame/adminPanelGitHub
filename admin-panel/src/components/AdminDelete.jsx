@@ -48,7 +48,7 @@ export default function AdminDelete(props) {
 
   return (
     <div id='adminsDiv'>
-        <h1 style={{marginRight:'30px'}}>{props.val.email}</h1>
+        <h1 id='emailToDelete' style={{marginRight:'30px'}}>{props.val.email}</h1>
         <button onClick={deleteAdmin} className='signInButton'>Delete</button>
     </div>
   )

@@ -26,9 +26,9 @@ export default function UsersList(props) {
   return (
     <div className='userDiv'>
         <div className='startUserDiv'>
-        <h3 style={{marginRight:'180px'}} className='userInformations'>Name : {props.val.userName}</h3>
-        <h3 style={{marginRight:'180px'}} className='userInformations'>Email : {props.val.email}</h3>
-        <h3 style={{marginRight:'180px'}} className='userInformations'>ID : {props.val.id}</h3>
+        <h3  className='userInformations'>Name : {props.val.userName}</h3>
+        <h3  className='userInformations'>Email : {props.val.email}</h3>
+        <h3  className='userInformations'>ID : {props.val.id}</h3>
         <button id='showMoreButton' onClick={showMore} >Show More</button>
         </div>
         {tickers()}

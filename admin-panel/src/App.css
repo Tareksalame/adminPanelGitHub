@@ -99,6 +99,7 @@
   font-weight: 900;
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
+  margin-right: 180px;
   color: white;
 }
 .tickersDiv
@@ -235,3 +236,142 @@
   border: none;
   font-weight: 900;
 }
+#emailToDelete
+{
+  font-size: 30px;
+}
+@media (max-width: 1200px){
+.App
+{
+  background-color: rgb(1, 114, 129);
+  display: flex;
+  height: 900px;
+  justify-content: center;
+  align-items: center;
+}
+.background
+{
+  width: 100%;
+  display: none;
+}
+#signInDiv
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* align-self: center; */
+  padding: 10px;
+  /* box-shadow: 1px 1px 2px gray, 0 0 45px gray, 0 0 5px gray;; */
+  background: rgb(1, 114, 129);
+}
+#adminPanelMenu
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#adminPanel
+{
+  padding: 30px;
+  top: 30%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.header
+{
+  top: 10%;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+  height: 8%;
+  padding: 0;
+  margin-bottom: 30px;
+  border-bottom: 0px;
+}
+#usersDiv
+{
+  position: absolute;
+  width: 90%;
+  top: 30%;
+  height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#tickersDiv
+{
+  position: absolute;
+  width: 90%;
+  top: 30%;
+  height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.signOutButton
+{
+  color: white;
+}
+.startUserDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.userInformations
+{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.tickersDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px white solid;
+}
+.tickersList
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px white solid;
+}
+.adminPanelMenuButton
+{
+  margin-right: 0px;
+}
+#scrollAdmins
+{
+  position: absolute;
+  width: 90%;
+  height: 30%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  align-self: center;
+  right: 3%;
+}
+#adminsDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#emailToDelete
+{
+  font-size: 20px;
+}
+  }
