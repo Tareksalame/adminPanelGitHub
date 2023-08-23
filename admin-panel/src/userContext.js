@@ -23,7 +23,7 @@ export const AdminProvider = ({children})=>
 
     const showDeleteButton = ()=>
     {
-        if(admin == 'Nathan@svcollege.co.il')
+        if(admin == 'tareq.salame@gmail.com')
         {
             setShow('flex')
             fetch('/getAdmins').then((res)=>{return res.json()}).
