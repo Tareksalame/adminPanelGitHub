@@ -221,7 +221,7 @@ app.post('/sendPasswordReset', async(req,res)=>
             res.json(null);
         }
     }
-    else
+    else if(requist == 3)
     {
         let deletedAdmin = req.body.deletedAdmin;
 
@@ -229,6 +229,21 @@ app.post('/sendPasswordReset', async(req,res)=>
             email:deletedAdmin
         })
         if(temp == null)
+        {
+            res.json(null);
+        }
+        else
+        {
+            sendEmailConfirmation(email,code)
+            res.json(code)
+        }
+    }
+    else
+    {
+      let temp = await adminModel.findOne({
+        email:email
+      })
+      if(temp == null)
         {
             res.json(null);
         }

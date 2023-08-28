@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom'
 export default function ForgetPassword(props) {
     const [email,setEmail] = useState('')
     const {setCode} = useContext(adminContext)
-    const {setAdmin} = useContext(adminContext)
+    const {setAdmin,req,setReq} = useContext(adminContext)
     props.setMenu(false)
 
     const nav = useNavigate()
 
     const send  = ()=>
     {
+        setReq(4)
         fetch('/sendPasswordReset' , 
         {
             headers:{
@@ -20,6 +21,7 @@ export default function ForgetPassword(props) {
             method:'post',
             body:JSON.stringify({
                 email:email,
+                requist:req
             })
         }).then((res)=>{return res.json()}).then((data)=>
     {
