@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'admin-panel/build')))
 app.use(bp.urlencoded({extended: false}));
 app.use(bp.json());
 const nodemailer = require('nodemailer');
+const { log } = require('console');
 db.connect(dbURI);
 
 
@@ -279,26 +280,28 @@ app.post('/changePassword', async(req,res)=>
 
 })
 
-app.post('/changeEmail', async(req,res)=>
-{
-    let email = req.body.email;
-    let newEmail = req.body.newEmail;
+app.post('/changeEmail', async (req, res) => {
+  const email = req.body.email;
+  const newEmail = req.body.newEmail;
 
-    let temp = await adminModel.updateOne(
-        { email: email },
-        { $set: { email: newEmail } }
-      );
+  try {
+    const temp = await adminModel.findOneAndUpdate(
+      { email: email },
+      { $set: { email: newEmail } },
+      { new: true } // This option returns the updated document
+    );
+      console.log(temp)
+    if (temp) {
+      res.json('Email updated successfully');
+    } else {
+      res.json('Email update failed');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json('Internal Server Error');
+  }
+});
 
-      if (temp.modifiedCount === 1)
-      {
-        res.json('Email updated successfully');
-      } 
-      else 
-      {
-        res.json('Password update failed');
-      }
-
-})
 
 app.post('/addAdmin', async(req,res)=>
 {

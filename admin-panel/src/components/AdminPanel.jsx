@@ -18,6 +18,8 @@ export default function AdminPanel(props) {
     const changePassword = ()=>
     {
         setReq(0)
+        setChangePage(0)
+
         if(newPassword !== newPasswordConfirm)
         {
             alert('Passwords are not match')
@@ -37,7 +39,6 @@ export default function AdminPanel(props) {
             .then((data)=>
             {
                 setCode(data)
-                setChangePage(0)
                 nav('/changeConfirmation')
             }).catch((err)=>{return err})
         }
@@ -46,6 +47,8 @@ export default function AdminPanel(props) {
     const changeEmail = ()=>
     {
         setReq(1)
+        setChangePage(1)
+
         if(admin == newEmail)
         {
             alert('please enter a new email')
@@ -74,7 +77,6 @@ export default function AdminPanel(props) {
                     {
                         setCode(data)
                         setAdmin(newEmail)
-                        setChangePage(1)
                         nav('/changeConfirmation')
                     }
                 }).catch((err)=>{return err})
@@ -85,6 +87,8 @@ export default function AdminPanel(props) {
     const addNewAdmin = ()=>
     {
         setReq(2)
+        setChangePage(2)
+
         if(admin == newAdmin)
         {
             alert('please enter a new email')
@@ -112,7 +116,6 @@ export default function AdminPanel(props) {
                     else
                     {
                         setCode(data)
-                        setChangePage(2)
                         nav('/changeConfirmation')
                     }
                 }).catch((err)=>{return err})

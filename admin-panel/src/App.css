@@ -95,11 +95,10 @@
 }
 .userInformations
 {
-  margin-right: 30px;
   font-weight: 900;
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
-  margin-right: 180px;
+  margin-right: 30px;
   color: white;
 }
 .tickersDiv

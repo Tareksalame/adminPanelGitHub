@@ -25,15 +25,15 @@ export default function TickersList(props) {
   return (
     <div>
     <div className='tickersList' style={{display:'flex'}}>
-    <h3 className='userInformations'>Tickers : {props.val.Ticker}</h3>
-    <h3 className='userInformations'>Quantity : {props.val.Quantity}</h3>
-    <h3 className='userInformations'>Price : {props.val.price}</h3>
-    <h3 className='userInformations'>ActualPice : {price}</h3>
-    <h3 className='userInformations'>ExitPrice : {props.val.ExitPrice}</h3>
-    <h3 className='userInformations'>StopLose : {props.val.StopLose}</h3>
-    <h3 className='userInformations'>TotalCost : {props.val.TotalCost}</h3>
-    <h3 className='userInformations'>ExpectedProfit : {props.val.ExpectedProfit}</h3>
-    <h3 className='userInformations'>ExpectedLose : {props.val.ExpectedLose}</h3>
+    <h3 className='userInformations'>Tickers <br /> {props.val.Ticker}</h3>
+    <h3 className='userInformations'>Quantity <br /> {props.val.Quantity}</h3>
+    <h3 className='userInformations'>Price <br /> {props.val.price}</h3>
+    <h3 className='userInformations'>ActualPice <br /> {price}</h3>
+    <h3 className='userInformations'>ExitPrice <br /> {props.val.ExitPrice}</h3>
+    <h3 className='userInformations'>StopLose <br /> {props.val.StopLose}</h3>
+    <h3 className='userInformations'>TotalCost <br /> {props.val.TotalCost}</h3>
+    <h3 className='userInformations'>ExpectedProfit <br /> {props.val.ExpectedProfit}</h3>
+    <h3 className='userInformations'>ExpectedLose <br /> {props.val.ExpectedLose}</h3>
     </div>
     </div>
   )
