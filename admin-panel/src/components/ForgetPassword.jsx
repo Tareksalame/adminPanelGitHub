@@ -12,6 +12,7 @@ export default function ForgetPassword(props) {
 
     const send  = ()=>
     {
+        let theEmail = email.toLowerCase()
         setReq(4)
         fetch('/sendPasswordReset' , 
         {
@@ -20,7 +21,7 @@ export default function ForgetPassword(props) {
             },
             method:'post',
             body:JSON.stringify({
-                email:email,
+                email:theEmail,
                 requist:req
             })
         }).then((res)=>{return res.json()}).then((data)=>
@@ -32,7 +33,7 @@ export default function ForgetPassword(props) {
         else
         {
             setCode(data)
-            setAdmin(email)
+            setAdmin(theEmail)
             nav('/codeConfirmation')
         }
     }    

@@ -19,6 +19,7 @@ export default function AdminPanel(props) {
     {
         setReq(0)
         setChangePage(0)
+        let theAdmin = admin.toLowerCase()
 
         if(newPassword !== newPasswordConfirm)
         {
@@ -32,7 +33,7 @@ export default function AdminPanel(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:admin,
+                    email:theAdmin,
                     requist:req
                 })
             }).then((res)=>{return res.json()})
@@ -48,6 +49,8 @@ export default function AdminPanel(props) {
     {
         setReq(1)
         setChangePage(1)
+        let theAdmin = admin.toLowerCase()
+        let theNewEmail = newEmail.toLowerCase()
 
         if(admin == newEmail)
         {
@@ -62,8 +65,8 @@ export default function AdminPanel(props) {
                     },
                     method:'post',
                     body:JSON.stringify({
-                        email:admin,
-                        newEmail:newEmail,
+                        email:theAdmin,
+                        newEmail:theNewEmail,
                         requist:req
                     })
                 }).then((res)=>{return res.json()})
@@ -87,7 +90,9 @@ export default function AdminPanel(props) {
     const addNewAdmin = ()=>
     {
         setReq(2)
-        setChangePage(2)
+        setChangePage(2) 
+        let theAdmin = admin.toLowerCase()
+        let theNewAdmin = newAdmin.toLowerCase()
 
         if(admin == newAdmin)
         {
@@ -102,8 +107,8 @@ export default function AdminPanel(props) {
                     },
                     method:'post',
                     body:JSON.stringify({
-                        email:admin,
-                        newAdmin:newAdmin,
+                        email:theAdmin,
+                        newAdmin:theNewAdmin,
                         requist:req
                     })
                 }).then((res)=>{return res.json()})

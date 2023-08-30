@@ -8,6 +8,8 @@ export default function AdminDelete(props) {
     const deleteAdmin = ()=>
     {
         props.setReq(3)
+        let theAdmin = props.val.admin.toLowerCase()
+        let theDelete = props.val.email.toLowerCase()
         if(props.admin == props.newAdmin)
         {
             alert('admin cannot delete his email')
@@ -21,8 +23,8 @@ export default function AdminDelete(props) {
                     },
                     method:'post',
                     body:JSON.stringify({
-                        email:props.admin,
-                        deletedAdmin: props.val.email,
+                        email:theAdmin,
+                        deletedAdmin: theDelete,
                         requist:props.req
 
                     })
@@ -37,7 +39,7 @@ export default function AdminDelete(props) {
                     {
                         setCode(data)
                         setChangePage(3)
-                        setAdminToDelete(props.val.email)
+                        setAdminToDelete(theAdmin)
                         nav('/changeConfirmation')
                     }
                 }).catch((err)=>{return err})

@@ -13,6 +13,7 @@ export default function PasswordReset(props) {
 
     const submit = ()=>
     {
+        let theAdmin = admin.toLowerCase()
         if(password != confirm)
         {
             alert('The Password & The Confirmation must be the same')
@@ -26,7 +27,7 @@ export default function PasswordReset(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:admin,
+                    email:theAdmin,
                     password:password,
                 })
             }).then((res)=>{return res.json()})

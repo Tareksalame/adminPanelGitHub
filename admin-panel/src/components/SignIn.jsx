@@ -15,6 +15,8 @@ export default function SignIn(props) {
 
     const check = ()=>
     {
+        let theEmail = email.toLowerCase()
+        console.log(theEmail)
         fetch('/check' , 
         {
           headers:{
@@ -22,7 +24,7 @@ export default function SignIn(props) {
         },
         method:'post',
         body:JSON.stringify({
-            email:email,
+            email:theEmail,
             password:password,
         })
     }).then((res)=>{return res.json()}).then((data)=>

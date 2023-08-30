@@ -15,6 +15,7 @@ export default function ChangeConfirmation(props) {
 
     const submitCode = ()=>
     {
+        let theAdmin = admin.toLowerCase()
         if(code != confirmation)
         {
             alert('the code is not currect')
@@ -28,7 +29,7 @@ export default function ChangeConfirmation(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:admin,
+                    email:theAdmin,
                     password:newPassword,
                 })
             }).then((res)=>{return res.json()})
@@ -48,6 +49,8 @@ export default function ChangeConfirmation(props) {
 
     const emailChange = ()=>
     {
+        let theAdmin = admin.toLowerCase()
+        let aNewEmail = newEmail.toLowerCase()
         if(code != confirmation)
         {
             alert('the code is not currect')
@@ -61,8 +64,8 @@ export default function ChangeConfirmation(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:admin,
-                    newEmail:newEmail,
+                    email:theAdmin,
+                    newEmail:aNewEmail,
                 })
             }).then((res)=>{return res.json()})
             .then((data)=>
@@ -81,6 +84,7 @@ export default function ChangeConfirmation(props) {
     }
     const addAdmin = ()=>
     {
+        let aNewAdmin = newAdmin.toLowerCase()
         if(code != confirmation)
         {
             alert('the code is not currect')
@@ -94,7 +98,7 @@ export default function ChangeConfirmation(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:newAdmin,
+                    email:aNewAdmin,
                     password:'12345',
                 })
             }).then((res)=>{return res.json()})
@@ -113,6 +117,7 @@ export default function ChangeConfirmation(props) {
     }
     const deleteAdmin = ()=>
     {
+        let theadminToDelete = adminToDelete.toLowerCase()
         if(code != confirmation)
         {
             alert('the code is not currect')
@@ -126,7 +131,7 @@ export default function ChangeConfirmation(props) {
                 },
                 method:'post',
                 body:JSON.stringify({
-                    email:adminToDelete,
+                    email:theadminToDelete,
                 })
             }).then((res)=>{return res.json()})
             .then((data)=>
@@ -143,7 +148,6 @@ export default function ChangeConfirmation(props) {
         }
     }
 
-    console.log(newAdmin);
     const changingPage = ()=>
     {
         if(changePage == 0)
